@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as CanvasWrapper from "@/components/designSystems/CanvasWrapper";
@@ -21,11 +21,22 @@ function Sphere(props: JSX.IntrinsicElements["mesh"]) {
 }
 
 export const Components = () => {
+  const [camera, setCamera] = useState<THREE.PerspectiveCamera | null>(null);
+
+  useEffect(() => {
+    if (camera) {
+      // Optionally, you can set up initial camera properties here
+    }
+  }, [camera]);
+
   return (
     <CanvasWrapper.Components>
       <Canvas
         frameloop="always"
         camera={{ position: [0, 0, 5], fov: 45 }}
+        onCreated={({ camera }) => {
+          setCamera(camera as THREE.PerspectiveCamera);
+        }}
       >
         <ambientLight />
         <spotLight
@@ -35,12 +46,14 @@ export const Components = () => {
           position={[5, 15, 10]}
         />
         <Sphere />
-        <OrbitControls
-          enableDamping
-          enableZoom={false}
-          ref={null as any}
-          target={[0, 0, 0]}
-        />
+        {camera && (
+          <OrbitControls
+            enableDamping
+            enableZoom={false}
+            target={[0, 0, 0]}
+            camera={camera}
+          />
+        )}
       </Canvas>
     </CanvasWrapper.Components>
   );
