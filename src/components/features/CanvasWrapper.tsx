@@ -12,7 +12,10 @@ function Sphere(props: JSX.IntrinsicElements["mesh"]) {
       ref={sphereRef}
     >
       <sphereGeometry args={[0.5, 32, 32]} />
-      <meshPhysicalMaterial />
+      <meshPhysicalMaterial
+        roughness={0.5}
+        metalness={1}
+      />
     </mesh>
   );
 }

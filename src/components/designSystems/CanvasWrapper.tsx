@@ -9,8 +9,8 @@ export const Components = ({ className, children }: Props) => {
   return (
     <div
       style={{
-        width: "450px",
-        height: "450px",
+        width: "350px",
+        height: "350px",
         backgroundColor: "white",
         margin: "10px",
       }}
