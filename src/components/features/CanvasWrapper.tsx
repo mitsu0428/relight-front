@@ -1,12 +1,17 @@
-import React, { useRef, useState } from "react";
-import * as CanvasWrapper from "@/components/designSystems/CanvasWrapper";
+import React, { useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import * as CanvasWrapper from "@/components/designSystems/CanvasWrapper";
 
 function Sphere(props: JSX.IntrinsicElements["mesh"]) {
+  const sphereRef = useRef<THREE.Mesh>(null);
+
   return (
-    <mesh {...props}>
-      <sphereGeometry args={[1, 64, 64]} />
+    <mesh
+      {...props}
+      ref={sphereRef}
+    >
+      <sphereGeometry args={[0.5, 64, 64]} />
       <meshPhysicalMaterial
         clearcoat={1}
         clearcoatRoughness={0}
@@ -32,7 +37,12 @@ export const Components = () => {
           position={[5, 15, 10]}
         />
         <Sphere />
-        <OrbitControls />
+        <OrbitControls
+          enableDamping
+          enableZoom={false}
+          ref={null as any}
+          target={[0, 0, 0]}
+        />
       </Canvas>
     </CanvasWrapper.Components>
   );

@@ -10,7 +10,7 @@ export const Components = ({ className, children }: Props) => {
     <div
       style={{
         width: "500px",
-        height: "500px",
+        height: "600px",
         backgroundColor: "white",
         margin: "10px",
       }}
