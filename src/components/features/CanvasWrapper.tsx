@@ -1,10 +1,7 @@
 import React, { useRef, useState } from "react";
 import * as CanvasWrapper from "@/components/designSystems/CanvasWrapper";
-import { Canvas, extend, useLoader } from "@react-three/fiber";
-import { OrbitControls, Environment } from "@react-three/drei";
-import { LUTPass } from "three-stdlib";
-
-extend({ LUTPass });
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 
 function Sphere(props: JSX.IntrinsicElements["mesh"]) {
   return (
