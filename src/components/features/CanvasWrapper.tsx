@@ -11,13 +11,8 @@ function Sphere(props: JSX.IntrinsicElements["mesh"]) {
       {...props}
       ref={sphereRef}
     >
-      <sphereGeometry args={[0.5, 64, 64]} />
-      <meshPhysicalMaterial
-        clearcoat={1}
-        clearcoatRoughness={0}
-        roughness={0}
-        metalness={0.5}
-      />
+      <sphereGeometry args={[0.5, 32, 32]} />
+      <meshPhysicalMaterial />
     </mesh>
   );
 }
@@ -26,12 +21,12 @@ export const Components = () => {
   return (
     <CanvasWrapper.Components>
       <Canvas
-        frameloop="demand"
+        frameloop="always"
         camera={{ position: [0, 0, 5], fov: 45 }}
       >
         <ambientLight />
         <spotLight
-          intensity={0.5}
+          intensity={0.2}
           angle={0.2}
           penumbra={1}
           position={[5, 15, 10]}
