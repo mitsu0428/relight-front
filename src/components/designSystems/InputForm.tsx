@@ -7,6 +7,13 @@ type Props = {
 };
 
 export const Components = ({ placeholder, className }: Props) => {
+  const [state, setState] = React.useState("close");
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setState(e.target.value);
+  };
+
+  const password = "xxx";
+
   return (
     <span
       style={{
@@ -21,6 +28,20 @@ export const Components = ({ placeholder, className }: Props) => {
         type="text"
         placeholder={placeholder}
         className={className}
+        onChange={handleChangeInput}
+      />
+      <button
+        style={{
+          margin: "10px",
+          padding: "10px",
+        }}
+        onClick={() => {
+          if (state === password) {
+            window.location.href = "/nextPage";
+          } else {
+            alert("Not Matched");
+          }
+        }}
       />
       <PiLockKey />
     </span>
